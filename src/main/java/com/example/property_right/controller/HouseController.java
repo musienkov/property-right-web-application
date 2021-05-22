@@ -1,9 +1,8 @@
 package com.example.property_right.controller;
 
 import com.example.property_right.exception.ObjectNotFoundException;
-import com.example.property_right.model.Car;
 import com.example.property_right.model.House;
-import com.example.property_right.repository.base.CrudRepository;
+import com.example.property_right.repository.CrudRepository;
 import com.example.property_right.service.HouseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

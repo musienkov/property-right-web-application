@@ -1,4 +1,4 @@
-package com.example.property_right.repository.base;
+package com.example.property_right.repository;
 
 import lombok.Value;
 

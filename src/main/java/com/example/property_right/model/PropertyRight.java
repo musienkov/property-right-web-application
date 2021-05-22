@@ -10,12 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PropertyRight {
-
     private Long id;
     private Long userId;
     private String documentType;
     private String description;
     private Long carId;
     private Long houseId;
-
 }

@@ -1,9 +1,8 @@
 package com.example.property_right.service;
 
-import com.example.property_right.model.Car;
 import com.example.property_right.model.House;
-import com.example.property_right.repository.base.CrudRepository;
-import com.example.property_right.repository.base.RepositoryWrappedCrudService;
+import com.example.property_right.repository.CrudRepository;
+import com.example.property_right.repository.RepositoryWrappedCrudService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -21,7 +20,6 @@ public class HouseService extends RepositoryWrappedCrudService<House, Long> {
     @EventListener(ApplicationReadyEvent.class)
     public void initData(){
         log.info("Creation init cars");
-
         save(new CrudRepository.Pair<>(++HOUSES_COUNT, House.builder()
                 .id(HOUSES_COUNT)
                 .square(100.5)
