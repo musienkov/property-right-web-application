@@ -1,3 +1,19 @@
+DROP TABLE IF EXISTS car;
+CREATE TABLE  car (
+  id bigint  PRIMARY KEY NOT NULL,
+  mark varchar(100) NOT NULL,
+  model varchar(100) NOT NULL,
+  price bigint
+);
+
+
+DROP TABLE IF EXISTS house;
+CREATE TABLE  house (
+  id bigint  PRIMARY KEY NOT NULL,
+  square decimal NOT NULL,
+  address varchar(100) NOT NULL
+);
+
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE  users (
@@ -9,20 +25,6 @@ CREATE TABLE  users (
   password varchar(100) NOT NULL
 );
 
-DROP TABLE IF EXISTS car;
-CREATE TABLE  car (
-  id bigint  PRIMARY KEY NOT NULL,
-  mark varchar(100) NOT NULL,
-  model varchar(100) NOT NULL,
-  price bigint
-);
-
-DROP TABLE IF EXISTS house;
-CREATE TABLE  house (
-  id bigint  PRIMARY KEY NOT NULL,
-  square decimal NOT NULL,
-  address varchar(100) NOT NULL
-);
 
 DROP TABLE IF EXISTS property_right;
 CREATE TABLE  property_right (

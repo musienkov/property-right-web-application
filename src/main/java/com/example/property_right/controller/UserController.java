@@ -79,13 +79,14 @@ public class UserController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Long id) {
-        userService.save(user);
+        userService.update(user);
         User updatedUser = userService.findById(id);
         return ResponseEntity.ok().body(updatedUser);
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<User>> getAll() {
+    public ResponseEntity<List<User>> getAll() throws InterruptedException {
+        Thread.sleep(300);
         return ResponseEntity.ok().body(userService.findAll());
     }
 }
