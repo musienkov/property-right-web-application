@@ -1,4 +1,4 @@
-package com.example.property_right.repository;
+package com.example.property_right.repository.memory;
 
 import java.util.ArrayList;
 import java.util.Collection;

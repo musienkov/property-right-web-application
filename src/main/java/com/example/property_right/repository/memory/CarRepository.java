@@ -1,6 +1,7 @@
-package com.example.property_right.repository;
+package com.example.property_right.repository.memory;
 
 import com.example.property_right.model.Car;
+import com.example.property_right.repository.memory.InMemoryCrudRepository;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,9 +1,7 @@
 package com.example.property_right.controller;
 
-import com.example.property_right.exception.ObjectNotFoundException;
 import com.example.property_right.model.House;
-import com.example.property_right.repository.CrudRepository;
-import com.example.property_right.service.HouseService;
+import com.example.property_right.service.jdbc.HouseServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,51 +18,38 @@ import java.util.List;
 @RequestMapping("/houses")
 public class HouseController {
 
-    private final HouseService houseService;
+    private final HouseServiceImpl houseService;
 
-    public HouseController(HouseService houseService) {
+    public HouseController(HouseServiceImpl houseService) {
         this.houseService = houseService;
     }
 
 
     @PostMapping("/create")
     public ResponseEntity<House> createUser(@RequestBody House house) {
-        houseService.save(new CrudRepository.Pair<>(house.getId(), house));
+        houseService.save(house);
         House createdHouse;
-        try {
-            createdHouse = houseService.findById(house.getId());
-        } catch (ObjectNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        createdHouse = houseService.findById(house.getId());
         return ResponseEntity.ok().body(createdHouse);
     }
 
     @GetMapping("/getById/{id}")
     public ResponseEntity<House> getUserById(@PathVariable Long id) {
         House house;
-        try {
-            house = houseService.findById(id);
-        } catch (ObjectNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        house = houseService.findById(id);
         return ResponseEntity.ok().body(house);
     }
 
     @PostMapping("/deleteById/{id}")
     public ResponseEntity<HttpStatus> deleteById(@PathVariable Long id) {
-        houseService.remove(id);
+        houseService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<House> updateUser(@RequestBody House house, @PathVariable Long id) {
-        houseService.save(new CrudRepository.Pair<>(id, house));
-        House updatedHouse;
-        try {
-            updatedHouse = houseService.findById(id);
-        } catch (ObjectNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        houseService.save(house);
+        House updatedHouse = houseService.findById(id);
         return ResponseEntity.ok().body(updatedHouse);
     }
 

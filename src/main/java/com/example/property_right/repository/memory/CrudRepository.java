@@ -1,4 +1,4 @@
-package com.example.property_right.repository;
+package com.example.property_right.repository.memory;
 
 import lombok.Value;
 

@@ -1,7 +1,7 @@
-package com.example.property_right.service;
+package com.example.property_right.service.memory;
 
 import com.example.property_right.exception.ObjectNotFoundException;
-import com.example.property_right.repository.CrudRepository;
+import com.example.property_right.repository.memory.CrudRepository;
 import lombok.Value;
 
 import java.util.Collection;

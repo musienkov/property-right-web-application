@@ -1,8 +1,8 @@
-package com.example.property_right.service;
+package com.example.property_right.service.memory;
 
 import com.example.property_right.model.User;
-import com.example.property_right.repository.CrudRepository;
-import com.example.property_right.repository.RepositoryWrappedCrudService;
+import com.example.property_right.repository.memory.CrudRepository;
+import com.example.property_right.repository.memory.RepositoryWrappedCrudService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

@@ -1,9 +1,7 @@
 package com.example.property_right.controller;
 
-import com.example.property_right.exception.ObjectNotFoundException;
 import com.example.property_right.model.Car;
-import com.example.property_right.repository.CrudRepository;
-import com.example.property_right.service.CarService;
+import com.example.property_right.service.jdbc.CarServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,51 +18,38 @@ import java.util.List;
 @RequestMapping("/cars")
 public class CarController {
 
-    private final CarService carService;
+    private final CarServiceImpl carService;
 
-    public CarController(CarService carService) {
+    public CarController(CarServiceImpl carService) {
         this.carService = carService;
     }
 
-
     @PostMapping("/create")
     public ResponseEntity<Car> createUser(@RequestBody Car car) {
-        carService.save(new CrudRepository.Pair<>(car.getId(), car));
+        carService.save(car);
         Car createdCar;
-        try {
-            createdCar = carService.findById(car.getId());
-        } catch (ObjectNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        createdCar = carService.findById(car.getId());
         return ResponseEntity.ok().body(createdCar);
     }
 
     @GetMapping("/getById/{id}")
     public ResponseEntity<Car> getUserById(@PathVariable Long id) {
         Car car;
-        try {
-            car = carService.findById(id);
-        } catch (ObjectNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        car = carService.findById(id);
         return ResponseEntity.ok().body(car);
     }
 
     @PostMapping("/deleteById/{id}")
     public ResponseEntity<HttpStatus> deleteById(@PathVariable Long id) {
-        carService.remove(id);
+        carService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Car> updateUser(@RequestBody Car car, @PathVariable Long id) {
-        carService.save(new CrudRepository.Pair<>(id, car));
+        carService.update(car);
         Car updatedCar;
-        try {
-            updatedCar = carService.findById(id);
-        } catch (ObjectNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+        updatedCar = carService.findById(id);
         return ResponseEntity.ok().body(updatedCar);
     }
 

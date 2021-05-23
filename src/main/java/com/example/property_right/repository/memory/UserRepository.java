@@ -1,4 +1,4 @@
-package com.example.property_right.repository;
+package com.example.property_right.repository.memory;
 
 import com.example.property_right.model.User;
 import lombok.extern.slf4j.Slf4j;
