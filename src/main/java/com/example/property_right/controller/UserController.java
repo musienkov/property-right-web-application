@@ -86,7 +86,6 @@ public class UserController {
 
     @GetMapping("/getAll")
     public ResponseEntity<List<User>> getAll() throws InterruptedException {
-        Thread.sleep(300);
         return ResponseEntity.ok().body(userService.findAll());
     }
 }
